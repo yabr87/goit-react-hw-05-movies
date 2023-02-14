@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTrending } from 'utils/movieApi';
-import { Link } from 'react-router-dom';
+import MoviesList from 'components/MoviesList';
 //import { Test } from './Home.styles';
 
 const Home = () => {
@@ -28,29 +28,7 @@ const Home = () => {
 
   console.log(movies);
 
-  return (
-    <ul>
-      {movies.map(({ original_title, poster_path, id }) => {
-        return (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>
-              <img
-                width="320"
-                height="480"
-                src={
-                  poster_path
-                    ? `https://image.tmdb.org/t/p/w400${poster_path}`
-                    : `https://via.placeholder.com/320x480`
-                }
-                alt=""
-              />
-              <p>{original_title}</p>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  return <MoviesList movies={movies} />;
 };
 
 export default Home;
