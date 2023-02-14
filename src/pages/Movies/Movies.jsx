@@ -1,5 +1,13 @@
 //import { Test } from './Movies.styles';
 
-const Movies = () => <div>MOVIE,MUVIE</div>;
+import Searchbar from 'components/Searchbar';
+
+const Movies = () => {
+  const onFormSubmit = () => {
+    console.log('movie');
+  };
+
+  return <Searchbar onSubmit={onFormSubmit} />;
+};
 
 export default Movies;

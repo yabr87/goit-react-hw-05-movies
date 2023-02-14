@@ -1,11 +1,11 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import {
   MoviesUnorderedList,
   MovieLink,
   MovieItem,
   MovieTitle,
+  MoviePoster,
 } from './MoviesList.styles';
 
 const MoviesList = ({ movies }) => {
@@ -15,7 +15,7 @@ const MoviesList = ({ movies }) => {
         return (
           <MovieItem key={id}>
             <MovieLink to={`/movies/${id}`}>
-              <img
+              <MoviePoster
                 src={
                   poster_path
                     ? `https://image.tmdb.org/t/p/w400${poster_path}`
@@ -23,6 +23,7 @@ const MoviesList = ({ movies }) => {
                 }
                 alt={original_title}
               />
+
               <MovieTitle>{original_title}</MovieTitle>
             </MovieLink>
           </MovieItem>
