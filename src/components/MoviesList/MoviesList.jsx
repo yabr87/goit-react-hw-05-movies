@@ -19,7 +19,7 @@ const MoviesList = ({ movies }) => {
                 src={
                   poster_path
                     ? `https://image.tmdb.org/t/p/w400${poster_path}`
-                    : `https://via.placeholder.com/320x480`
+                    : `https://via.placeholder.com/400x600`
                 }
                 alt={original_title}
               />
