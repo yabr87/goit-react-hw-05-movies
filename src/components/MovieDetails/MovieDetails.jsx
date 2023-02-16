@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
   const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/test';
 
   useEffect(() => {
     if (movie) {
@@ -38,7 +39,7 @@ const MovieDetails = () => {
             : `https://via.placeholder.com/400x600`,
           original_title,
           overview,
-          vote_average: vote_average * 10,
+          vote_average: Math.round(vote_average * 10),
           release_date: release_date.slice(0, 4),
           genres: genres.map(genre => genre.name).join(', '),
         });
@@ -65,7 +66,7 @@ const MovieDetails = () => {
   return (
     <main>
       <MovieBox>
-        <GoBackLink to={location.state?.from ?? '/'}>
+        <GoBackLink to={backLinkHref}>
           <TfiArrowLeft size="16" /> Go back
         </GoBackLink>
         <MoviePoster src={poster_path} alt={original_title} />

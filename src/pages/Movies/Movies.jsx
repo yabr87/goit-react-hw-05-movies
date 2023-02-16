@@ -1,13 +1,41 @@
 //import { Test } from './Movies.styles';
-
+import { useEffect, useState } from 'react';
 import Searchbar from 'components/Searchbar';
+import MoviesList from 'components/MoviesList';
+import { searchMovies } from 'utils/movieApi';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  const onFormSubmit = () => {
-    console.log('movie');
+  const [movies, setMovies] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
+
+  useEffect(() => {
+    if (searchQuery === '') return;
+
+    const initialFetch = async () => {
+      try {
+        const movies = await searchMovies(searchQuery, 1);
+        console.log(movies.results);
+        setMovies(movies.results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    initialFetch();
+  }, [searchQuery]);
+
+  const onFormSubmit = value => {
+    setSearchParams({ query: value });
+    console.log(value);
   };
 
-  return <Searchbar onSubmit={onFormSubmit} />;
+  return (
+    <>
+      <Searchbar onSubmit={onFormSubmit} />
+      {movies && <MoviesList movies={movies} />}
+    </>
+  );
 };
 
 export default Movies;

@@ -25,6 +25,17 @@ export const getMovie = async id => {
   return data;
 };
 
+export const searchMovies = async (query, page) => {
+  const { data } = await instance.get(`/search/movie`, {
+    params: {
+      query: query,
+      page: page,
+    },
+  });
+
+  return data;
+};
+
 // import axios from 'axios';
 // import genresJson from './components/genres.json';
 
@@ -55,6 +66,7 @@ export const getMovie = async id => {
 //     try {
 //       const { data } = await axios.get(
 //         `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`
+
 //       );
 //       return data;
 //     } catch (error) {
