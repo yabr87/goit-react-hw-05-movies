@@ -15,7 +15,6 @@ const Cast = () => {
     const fetchCast = async () => {
       try {
         const cast = await getCast(id);
-        console.log('cccccccccccccccccccc', cast.cast);
         setCast(cast.cast);
       } catch (error) {
         console.log(error);

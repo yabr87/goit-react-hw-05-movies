@@ -47,4 +47,3 @@ export const getCast = async id => {
 
   return data;
 };
-

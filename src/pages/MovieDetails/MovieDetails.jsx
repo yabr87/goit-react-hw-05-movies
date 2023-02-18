@@ -3,6 +3,7 @@ import { Outlet, useLocation, useParams, useNavigate } from 'react-router-dom';
 import { getMovie } from 'utils/movieApi';
 import { TfiArrowLeft } from 'react-icons/tfi';
 import Spiner from 'components/Spiner';
+import { normalizeMovieDetails } from './normalizeMovieDetails';
 import {
   MovieBox,
   MovieText,
@@ -37,26 +38,7 @@ const MovieDetails = () => {
     const fetchMovie = async () => {
       try {
         const movie = await getMovie(id);
-
-        const {
-          poster_path,
-          original_title,
-          overview,
-          vote_average,
-          release_date,
-          genres,
-        } = movie;
-
-        setMovie({
-          poster_path: poster_path
-            ? `https://image.tmdb.org/t/p/w400${poster_path}`
-            : `https://via.placeholder.com/400x600`,
-          original_title,
-          overview,
-          vote_average: Math.round(vote_average * 10),
-          release_date: release_date.slice(0, 4),
-          genres: genres.map(genre => genre.name).join(', '),
-        });
+        setMovie(normalizeMovieDetails(movie));
       } catch (error) {
         console.log(error);
         navigate('/');

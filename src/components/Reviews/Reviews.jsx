@@ -16,7 +16,6 @@ const Reviews = () => {
       try {
         const reviews = await getReviews(id);
         setReviews(reviews.results);
-        console.log('-------------------', reviews.results);
       } catch (error) {
         console.log(error);
       }
