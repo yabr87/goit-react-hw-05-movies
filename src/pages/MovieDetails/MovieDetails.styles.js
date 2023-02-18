@@ -30,3 +30,20 @@ export const GoBackLink = styled(Link)`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `;
+
+export const LinkBox = styled.div`
+  display: grid;
+  gap: 16px;
+`;
+
+export const InformationLink = styled(Link)`
+  background-color: white;
+  display: inline-flex;
+  justify-content: center;
+  width: 98px;
+  margin-right: 16px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+`;

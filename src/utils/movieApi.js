@@ -36,6 +36,18 @@ export const searchMovies = async (query, page) => {
   return data;
 };
 
+export const getReviews = async id => {
+  const { data } = await instance.get(`/movie/${id}/reviews`);
+
+  return data;
+};
+
+export const getCast = async id => {
+  const { data } = await instance.get(`/movie/${id}/credits`);
+
+  return data;
+};
+
 // import axios from 'axios';
 // import genresJson from './components/genres.json';
 

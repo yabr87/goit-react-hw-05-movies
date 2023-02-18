@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   MoviesUnorderedList,
@@ -9,12 +10,13 @@ import {
 } from './MoviesList.styles';
 
 const MoviesList = ({ movies }) => {
+  const location = useLocation();
   return (
     <MoviesUnorderedList>
       {movies.map(({ original_title, poster_path, id }) => {
         return (
           <MovieItem key={id}>
-            <MovieLink to={`/movies/${id}`}>
+            <MovieLink to={`/movies/${id}`} state={{ from: location }}>
               <MoviePoster
                 src={
                   poster_path

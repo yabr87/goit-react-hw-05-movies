@@ -13,7 +13,7 @@ const Movies = () => {
   useEffect(() => {
     if (searchQuery === '') return;
 
-    const initialFetch = async () => {
+    const fetchMovies = async () => {
       try {
         const movies = await searchMovies(searchQuery, 1);
         console.log(movies.results);
@@ -22,7 +22,7 @@ const Movies = () => {
         console.log(error);
       }
     };
-    initialFetch();
+    fetchMovies();
   }, [searchQuery]);
 
   const onFormSubmit = value => {

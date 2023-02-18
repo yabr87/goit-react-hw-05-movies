@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { RotatingTriangles } from 'react-loader-spinner';
 
-const Spiner = ({ loading }) => {
+const Spiner = () => {
   return (
     <RotatingTriangles
-      visible={loading}
+      visible={true}
       height="70"
       width="70"
       ariaLabel="rotating-triangels-loading"
@@ -13,8 +13,8 @@ const Spiner = ({ loading }) => {
   );
 };
 
-Spiner.propTypes = {
-  loading: PropTypes.bool.isRequired,
-};
+// Spiner.propTypes = {
+//   loading: PropTypes.bool.isRequired,
+// };
 
 export default Spiner;

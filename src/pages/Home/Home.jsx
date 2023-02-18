@@ -13,13 +13,13 @@ const Home = () => {
 
     const initialFetch = async () => {
       try {
-        const movies = await getTrending();
+        const movies = await getTrending(1);
         setMovies(movies.results);
       } catch (error) {
         console.log(error);
       }
     };
-    initialFetch(1);
+    initialFetch();
   });
 
   if (!movies) {
