@@ -48,7 +48,7 @@ const MovieDetails = () => {
   }, [id, movie, navigate]);
 
   if (!movie) {
-    return;
+    return <Spiner />;
   }
 
   const {

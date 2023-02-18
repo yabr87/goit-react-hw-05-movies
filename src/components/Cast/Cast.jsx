@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCast } from 'utils/movieApi';
 import { CastUnorderedList } from './Cast.styles';
+import Spiner from 'components/Spiner';
 
 const Cast = () => {
   const { id } = useParams();
@@ -22,6 +23,10 @@ const Cast = () => {
     };
     fetchCast();
   });
+
+  if (!cast) {
+    return <Spiner />;
+  }
 
   return (
     <>

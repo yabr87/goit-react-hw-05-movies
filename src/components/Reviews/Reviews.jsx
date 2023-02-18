@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getReviews } from 'utils/movieApi';
 import { ReviewsUnorderedList } from './Reviews.styles';
+import Spiner from 'components/Spiner';
 
 const Reviews = () => {
   const { id } = useParams();
@@ -22,6 +23,10 @@ const Reviews = () => {
     };
     fetchReviews();
   });
+
+  if (!reviews) {
+    return <Spiner />;
+  }
 
   return (
     <>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTrending } from 'utils/movieApi';
 import MoviesList from 'components/MoviesList';
-//import { Test } from './Home.styles';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -22,11 +21,9 @@ const Home = () => {
     initialFetch();
   });
 
-  if (!movies) {
+  if (!movies.length) {
     return;
   }
-
-  console.log(movies);
 
   return <MoviesList movies={movies} />;
 };
