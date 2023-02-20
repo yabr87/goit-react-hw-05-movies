@@ -1,27 +1,12 @@
-import { useEffect, useState } from 'react';
+import useFetch from 'utils/useFetch';
 import { getTrending } from 'utils/movieApi';
 import MoviesList from 'components/MoviesList';
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const movies = useFetch(1, getTrending);
+ 
 
-  useEffect(() => {
-    if (movies?.length) {
-      return;
-    }
-
-    const initialFetch = async () => {
-      try {
-        const movies = await getTrending(1);
-        setMovies(movies.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    initialFetch();
-  });
-
-  if (!movies.length) {
+  if (!movies) {
     return;
   }
 
@@ -29,3 +14,19 @@ const Home = () => {
 };
 
 export default Home;
+
+// useEffect(() => {
+  //   if (movies) {
+  //     return;
+  //   }
+
+  //   const initialFetch = async () => {
+  //     try {
+  //       const movies = await getTrending(1);
+  //       setMovies(movies);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   initialFetch();
+  // });

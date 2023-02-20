@@ -4,7 +4,7 @@ export const SpinnerBackdrop = styled.div`
   position: fixed;
   height: 100%;
   width: 100%;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
   z-index: 998;
 `;
 

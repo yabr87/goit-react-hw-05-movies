@@ -1,28 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { getCast } from 'utils/movieApi';
 import { CastUnorderedList } from './Cast.styles';
 import Spiner from 'components/Spiner';
-
+import useFetch from 'utils/useFetch';
 const Cast = () => {
   const { id } = useParams();
-  const [cast, setCast] = useState(null);
-
-  useEffect(() => {
-    if (cast) {
-      return;
-    }
-
-    const fetchCast = async () => {
-      try {
-        const cast = await getCast(id);
-        setCast(cast.cast);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCast();
-  });
+  const cast = useFetch(id, getCast);
 
   if (!cast) {
     return <Spiner />;
@@ -59,3 +42,21 @@ const Cast = () => {
 };
 
 export default Cast;
+
+// const [cast, setCast] = useState(null);
+
+// useEffect(() => {
+//   if (cast) {
+//     return;
+//   }
+
+//   const fetchCast = async () => {
+//     try {
+//       const cast = await getCast(id);
+//       setCast(cast);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   fetchCast();
+// });

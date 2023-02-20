@@ -1,28 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import useFetch from 'utils/useFetch';
 import { getReviews } from 'utils/movieApi';
 import { ReviewsUnorderedList } from './Reviews.styles';
 import Spiner from 'components/Spiner';
 
 const Reviews = () => {
   const { id } = useParams();
-  const [reviews, setReviews] = useState(null);
-
-  useEffect(() => {
-    if (reviews) {
-      return;
-    }
-
-    const fetchReviews = async () => {
-      try {
-        const reviews = await getReviews(id);
-        setReviews(reviews.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchReviews();
-  });
+  const reviews = useFetch(id, getReviews);
 
   if (!reviews) {
     return <Spiner />;
@@ -49,3 +33,19 @@ const Reviews = () => {
 };
 
 export default Reviews;
+
+// useEffect(() => {
+//   if (reviews) {
+//     return;
+//   }
+
+//   const fetchReviews = async () => {
+//     try {
+//       const reviews = await getReviews(id);
+//       setReviews(reviews);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   fetchReviews();
+// });

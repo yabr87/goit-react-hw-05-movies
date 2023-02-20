@@ -13,7 +13,7 @@ export const getTrending = async page => {
       page: page,
     },
   });
-  return data;
+  return data.results;
 };
 
 export const getMovie = async id => {
@@ -39,11 +39,11 @@ export const searchMovies = async (query, page) => {
 export const getReviews = async id => {
   const { data } = await instance.get(`/movie/${id}/reviews`);
 
-  return data;
+  return data.results;
 };
 
 export const getCast = async id => {
   const { data } = await instance.get(`/movie/${id}/credits`);
 
-  return data;
+  return data.cast;
 };
