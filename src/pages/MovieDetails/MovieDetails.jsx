@@ -85,12 +85,8 @@ const MovieDetails = () => {
           <LinkBox>
             <p>Additional Information</p>
             <div>
-              <InformationLink to="cast" state={{ from: location }}>
-                Cast
-              </InformationLink>
-              <InformationLink to="reviews" state={{ from: location }}>
-                Reviews
-              </InformationLink>
+              <InformationLink to="cast">Cast</InformationLink>
+              <InformationLink to="reviews">Reviews</InformationLink>
             </div>
           </LinkBox>
         </MovieBox>

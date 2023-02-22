@@ -18,7 +18,7 @@ const useFetch = (argument, fetchDataFromApi) => {
     };
 
     fetchData();
-  });
+  }, [argument, data, fetchDataFromApi]);
 
   return data;
 };
