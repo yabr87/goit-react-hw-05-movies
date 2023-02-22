@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, Suspense } from 'react';
+import { useRef, Suspense } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import useFetch from 'utils/useFetch';
 import { getMovie } from 'utils/movieApi';
@@ -18,6 +18,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const movie = useFetch(id, getMovie);
   const location = useLocation();
+
   const initialPath = useRef(location?.state?.from || null);
   let backLink = '';
   if (initialPath.current?.pathname === '/') {
