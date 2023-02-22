@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useFetch = (argument, fetchDataFromApi) => {
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -14,11 +16,12 @@ const useFetch = (argument, fetchDataFromApi) => {
         setData(response);
       } catch (error) {
         console.log(error);
+        navigate('/');
       }
     };
 
     fetchData();
-  }, [argument, data, fetchDataFromApi]);
+  }, [argument, data, fetchDataFromApi, navigate]);
 
   return data;
 };
